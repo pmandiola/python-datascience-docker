@@ -6,7 +6,17 @@ LABEL maintainer="Pablo Mandiola <pmandiolab@gmail.com>"
 # Install additional packages
 RUN conda install --quiet --yes -c conda-forge \
     'gdal=2.4.0' \
-    'geopandas=0.4.0' && \
-    pip install tweepy && \
+    'geopandas=0.4.0' \
+    cartopy \
+    graphviz \
+    mrjob \
+    feather-format && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
+
+RUN pip install tweepy \
+    pydotplus \
+    textblob \
+    gevent-websocket && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
