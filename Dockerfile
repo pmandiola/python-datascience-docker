@@ -5,6 +5,7 @@ LABEL maintainer="Pablo Mandiola <pmandiolab@gmail.com>"
 
 # Install additional packages
 RUN conda install --quiet --yes -c conda-forge \
+    'gdal=2.4.0' \
     geopandas \
     cartopy \
     graphviz \
