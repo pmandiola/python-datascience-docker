@@ -5,12 +5,21 @@ LABEL maintainer="Pablo Mandiola <pmandiolab@gmail.com>"
 
 # Install additional packages
 RUN conda install --quiet --yes -c conda-forge \
-    'gdal=2.4.0' \
-    'geopandas=0.4.0' \
+    geopandas \
     cartopy \
     graphviz \
     mrjob \
-    feather-format && \
+    spacy \
+    gensim \
+    feather-format \
+    osmnx \
+    folium \
+    pylint && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
+
+RUN conda install --quiet --yes -c ankurankan \
+    pgmpy && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
