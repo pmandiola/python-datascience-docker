@@ -5,7 +5,10 @@ LABEL maintainer="Pablo Mandiola <pmandiolab@gmail.com>"
 
 # Install additional packages
 RUN conda install --quiet --yes -c conda-forge \
-    'gdal=2.4.0' \
+    pandas-gbq \
+    pandas-profiling \
+    xgboost \
+    'gdal=2.4.2' \
     geopandas \
     cartopy \
     graphviz \
@@ -28,5 +31,9 @@ RUN pip install tweepy \
     pydotplus \
     textblob \
     gevent-websocket && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
+
+RUN conda install --quiet --yes -c h2oai h2o && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
